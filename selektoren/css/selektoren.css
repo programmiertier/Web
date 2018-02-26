@@ -59,7 +59,6 @@ article > p{
 
 /*
     Geschwisterselektor:
-
     h2 ~ p{...}
     (selektiert alle <p> Elemente, welche Geschwister von <h2> sind)
 */
@@ -101,5 +100,129 @@ h2 + p{
     besitzen)
 */
 .section.first{
-    color: blue;
+    color: limegreen;
 }
+
+/*
+    Pseudoklassen
+    dynamischen PseudoklasseN.
+    Beschreiben einen Zustand eines Elements
+    :hover, :link, :active, :visited, :focus
+
+    Default für <a> Elemente: link -< blau und unterstrichen
+*/
+
+/* Zustand bereits besuchter Links -> violette Schriftfarbe. Sollte man nicht vernachlässigen!
+    => Usabilit
+*/
+a:visited{
+    color: #f0f;
+}
+
+/*
+    Zustand beim gedrückt halten der Maus auf ein Element -> rote Schrift
+    Kaumf bis gar nidcht in der Nutzung mit Links, da der Zustand i.d.r: nur ms anhält
+*/
+a:active{
+    color: orange;
+}
+
+/*
+    Zustand des "mouseover" eines Elements
+*/
+a:hover{
+    color: darkcyan;
+}
+
+p:hover{
+    font-size: 18px;
+    color: lime;
+}
+
+/*
+    Zustand eines elements mit Fokus (durch Tab mit Formularelemnte)
+*/
+a:focus{
+    color: yellow;
+}
+
+[type=text]:focus{
+    box-shadow: royalblue 0 0 5px;
+}
+
+/*
+    Auch bei Pseudoklassen gilt es auf das Leerzeichen in der Selektion zu achten!
+
+    div:hover{...}
+    (selektiert alle <div> Elemente, mit einer Maus überfahren 
+    werden)
+
+    div :hover{...} => Browser liest div *:hover{...}
+    (selektiert alle Elemente, die mit einer Muas überfahren werden und in einem <div>
+    verschachtelt sind)
+
+    Auch Pseudoklassen können kombiniert werden
+
+    nav li:hover a{...}
+    (selektiert alle <a>-Elemente, wenn ein Eltern li gehovert wurde, welches in einer nav steht)
+*/
+
+
+/*
+    weitere Pseudoklassen
+    :disabled, :enabled, :checked
+
+    :target ist aktive, wenn ein Element im Dokument über einen Anker (id) angesteuert wird
+*/
+
+/*
+    strukturelle Pseudoklassen:
+    :first-child, :last-child, :nth-child,
+    :nth-of-type()
+*/
+
+#artikel1 p:last-child{
+    text-decoration: underline;
+}
+
+#artikel1 li:last-child{
+    text-decoration: underline;
+}
+/*
+    Selektiert in einem Element mit der id="artikel1" alle Nachfahren vom Typ <li> welche
+    letztes Kind Ihres Elterncontainers sind
+*/
+
+/*
+    :nth-child(an+b), :nth-of-type(an+b)
+    selektiert all diejenigen Elemente, deren Aufzählungsposition bei Division durch a den Rest
+    b lässt
+
+    Übersetzt:
+    a = Wiederholungsrate
+    b = Position
+    n = Index des Elements in seiner Ebene
+
+    :nth-child(2n) alle geraden Aufzählungspositionen ->    :nth-child(even)
+    nth-child(2n+1) ungerade Aufzählungspositionen ->       :nth-child(odd)
+
+    li:nth-child(3n+3) wählt jedes 3. Kindelement
+
+*/
+li:nth-child(3n+3){
+    background-color: lightseagreen;
+    color: darkslateblue;
+}
+
+/*
+    Mit :not() kann man Elemente von einer Selektion ausschließen
+    in der Klammer steht ein einfacher Selektor
+*/
+
+article a:not([href$=de]) {
+    font-weight: 700;
+}
+/*
+    selektiert alle <a> Elemente in einem <article> verschachtelt, welche NICHT ein Attribut
+    href mit dem Wert "de" am Ende haben.
+*/
