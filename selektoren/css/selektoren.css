@@ -46,11 +46,11 @@
     Diese bilden das Verschachtelungsprinzip im HTML ab.
 
     Nachfahreselektor: 
-    header nav(...)
+    header nav{...}
     (leerzeichen!)(selektiert alle nav Elemente, welche Nachfahren eines header Elements sind)
 
     Kindselektor:
-    article > p(...)
+    article > p{...}
     (selektiert alle p Elemente, welche Kinderelemente von einem article sind)
 */
 article > p{
@@ -60,10 +60,46 @@ article > p{
 /*
     Geschwisterselektor:
 
-    h2 ~ p(...)
+    h2 ~ p{...}
     (selektiert alle <p> Elemente, welche Geschwister von <h2> sind)
 */
 h2 ~ p{
-    font-size: 12px;
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+    Nachbarselektor:
+    h2 + p{...}
+    (selektiert alle <p> Elemente, welche Nachbarn (nachfolgendes Element
+    auf gleicher "Ebene") einer <h2> sind)
+*/
+h2 + p{
+    font-style: italic;
+}
+
+/*
+    owl selector (weil es, wie eine kleine Eule ausschaut)
+    * + *
+    (jedes Element, das einen Nachbarn hat)
+*/
+
+/*
+    Kombination durch Nachfahrenselektion hat OHNE Leerzeichen eine andere Bedeutung!
+    img.left{...}
+    (selektiere alle <img> Elemente, mit der class="left")
+
+    article#artikel1{...}
+    (selektiere alle <article> Elemente, mit der id="artikel1")
+
+    #artikel1.border{...}
+    (selektiere alle Elemente, welche sowohl die id="artikel1", als auch class="border" haben)
+
+    .spalte.last{...}
+    (selektiere alle Elemente, die sowohl die class="spalte", als auch die class="last" 
+    => <div class="spalte last"></div>
+    besitzen)
+*/
+.section.first{
+    color: blue;
 }
