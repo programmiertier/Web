@@ -1,0 +1,69 @@
+/*
+    Universalselektor: * alle Elemente im html dokument
+
+    Typselektor (Elementselektor) : header
+    (selektiert alle Elemente des Dokument mit gleichem Namen)
+
+    Klassenselektor: .spalte
+    (selektiert eine Gruppe von Elementen einer gleichen Klasse)
+
+    ID-Selektor: #artikel1
+    (selektiert ein bestimmtes Element über eine einzigartige ID)
+
+    Verweis: 
+    http://wiki.selfhtml.org/wiki/CSS/Selektoren
+        
+*/
+
+/*
+    Attributselektor: [href]
+    (selektiert alle Elemente, die das Attribut href beinhalten)
+*/
+[type=text]{
+    color: #ff0000;
+}
+/*
+    Man kann den Wert eines Attributes filtern durch
+    Verwendung bestimmter Zeichenketten:
+    =, ~=, |=, ^=, $=, +=
+*/
+[href^=http]{
+    font-size: 40px;
+}
+/*
+    selektiert alle Elemente deren Attribut href mit "http" im Wert beginnt
+*/
+
+[href$=de]{
+    text-decoration: none;
+}
+/*
+    selektiert alle Elemente deren Attribut href auf "de" im Wert endet
+*/
+
+/*
+    Mit Kombinatioren können Elemente in der Selektion zusammengefasst werden.
+    Diese bilden das Verschachtelungsprinzip im HTML ab.
+
+    Nachfahreselektor: 
+    header nav(...)
+    (leerzeichen!)(selektiert alle nav Elemente, welche Nachfahren eines header Elements sind)
+
+    Kindselektor:
+    article > p(...)
+    (selektiert alle p Elemente, welche Kinderelemente von einem article sind)
+*/
+article > p{
+    color: #f00;
+}
+
+/*
+    Geschwisterselektor:
+
+    h2 ~ p(...)
+    (selektiert alle <p> Elemente, welche Geschwister von <h2> sind)
+*/
+h2 ~ p{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
